@@ -1,31 +1,31 @@
 <h1>Listado de Autores</h1>
 
 <% if @autores.any? %>
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-  <% @autores.each do |autor| %>
-    <tr>
-      <td><%= autor.nombre %></td>
-      <td><%= link_to 'Mostrar', autor %></td>
-      <td><%= link_to 'Editar', edit_autor_path(autor) %></td>
-      <td><%= link_to 'Eliminar', autor, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @autores.each do |autor| %>
+        <tr>
+          <td><%= autor.nombre %></td>
+          <td><%= link_to 'Mostrar', autor %></td>
+          <td><%= link_to 'Editar', edit_autor_path(autor) %></td>
+          <td><%= link_to 'Eliminar', autor, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-<div>
-  <h3>No se encontraron Autores</h3>
-</div>
+  <div>
+    <h3>No se encontraron Autores</h3>
+  </div>
 <% end %>
 
 <br />
