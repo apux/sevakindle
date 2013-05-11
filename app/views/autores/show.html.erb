@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @autor.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_autor_path(@autor) %> |
+<%= link_to 'Listado', autores_path %>

@@ -1,0 +1,7 @@
+<% content_for :title, "#{@publicacion.titulo} - #{@publicacion.autor.nombre}" %>
+<% content_for :author, "#{@publicacion.autor.nombre}" %>
+
+<h1><%= @publicacion.titulo %></h1>
+<h2><%= @publicacion.autor %></h2>
+
+<%= simple_format @publicacion.texto %>

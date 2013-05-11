@@ -1,0 +1,2 @@
+module TiposPublicacionesHelper
+end

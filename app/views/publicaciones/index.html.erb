@@ -1,0 +1,36 @@
+<h1>Listado de Publicaciones</h1>
+
+<% if @publicaciones.any? %>
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Autor</th>
+      <th>Tipo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @publicaciones.each do |publicacion| %>
+    <tr>
+      <td><%= publicacion.titulo %></td>
+      <td><%= publicacion.autor %></td>
+      <td><%= publicacion.tipo %></td>
+      <td><%= link_to 'Mostrar', publicacion %></td>
+      <td><%= link_to 'Editar', edit_publicacion_path(publicacion) %></td>
+      <td><%= link_to 'Eliminar', publicacion, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+<div>
+  <h3>No se encontraron Publicaciones</h3>
+</div>
+<% end %>
+
+<br />
+<%= link_to "Nueva Publicacion", new_publicacion_path %>
