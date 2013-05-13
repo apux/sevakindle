@@ -1,0 +1,12 @@
+.row
+  .span12.cuentoes_thumbnail
+    %ul.thumbnails
+
+      - @cuentos.each do |cuento|
+        %li.span6
+          .thumbnail
+            .titulo= cuento.titulo
+            .autor= cuento.autor
+            %br/
+            .resumen= simple_format truncate(cuento.texto, length: 500)
+            .ver_mas= link_to 'Leer completo', publicacion_path(cuento)
