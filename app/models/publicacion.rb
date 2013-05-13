@@ -7,7 +7,7 @@ class Publicacion < ActiveRecord::Base
   validates :titulo, :texto, presence: true
 
   # == Scopes ==
-  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre" => 'cuento') }
+  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre" => 'Cuento') }
 
   # == Callbacks ==
   before_validation :get_from_url
