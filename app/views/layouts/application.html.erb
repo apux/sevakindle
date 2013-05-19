@@ -10,10 +10,10 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -51,7 +51,6 @@
               <li><%= link_to "Cuentos", cuentos_path %></li>
               <li><%= link_to "Ensayos", "/path2" %></li>
               <li><%= link_to "Autores", autores_path %></li>
-              <li><%= link_to "Autores otros nada mas para hacer mas grande", autores_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,12 +58,23 @@
     </div>
 
     <div class="container">
-        <div class="row">
-          <div class="span12">
-            <%#= bootstrap_flash %>
-            <%= yield %>
-          </div>
-        </div><!--/row-->
+      <div class="row">
+        <div class="span12">
+          <% if notice %>
+            <div class="alert alert-success">
+              <button class="close" data-dismiss="alert">×</button>
+              <%= notice %>
+            </div>
+          <% end %>
+          <% if alert %>
+            <div class="alert alert-error">
+              <button class="close" data-dismiss="alert">×</button>
+              <%= alert %>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
 
     </div> <!-- /container -->
 
