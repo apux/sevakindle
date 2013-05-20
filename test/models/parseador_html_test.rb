@@ -16,7 +16,7 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      (@parseador.texto + "\n").must_equal File.read(Rails.root.to_s + '/test/fixtures/wakefield.txt')
+      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/wakefield.txt')
     end
   end
 
@@ -35,7 +35,7 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      (@parseador.texto + "\n").must_equal File.read(Rails.root.to_s + '/test/fixtures/canario.txt')
+      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/canario.txt')
     end
   end
 
@@ -54,7 +54,7 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      (@parseador.texto + "\n").must_equal File.read(Rails.root.to_s + '/test/fixtures/matrimonio.txt')
+      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/matrimonio.txt')
     end
   end
 
@@ -73,7 +73,26 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      (@parseador.texto + "\n").must_equal File.read(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.txt')
+      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.txt')
+    end
+  end
+
+  describe 'arabia' do
+    before do
+      html = File.open(Rails.root.to_s + '/test/fixtures/arabia.html')
+      @parseador = ParseadorHtml.new(html)
+    end
+
+    it 'extract the autor' do
+      @parseador.autor.must_equal 'James Joyce'
+    end
+
+    it 'extract the title' do
+      @parseador.titulo.must_equal 'Arabia'
+    end
+
+    it 'extract the text' do
+      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/arabia.txt')
     end
   end
 end

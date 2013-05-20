@@ -3,7 +3,7 @@ require 'nokogiri'
 class ParseadorHtml
   def initialize(input)
     @doc = Nokogiri::HTML(input)
-    @title_node = @doc.css('center > table > tr > td > font').first
+    @nodo_titulo = @doc.css('center > table > tr > td > font').first
   end
 
   def titulo
@@ -35,7 +35,7 @@ class ParseadorHtml
   end
 
   def extraer_seccion_titulo
-    cadenas = @title_node.parent.children.map do |t1|
+    cadenas = @nodo_titulo.parent.children.map do |t1|
       if aux = t1.css('font') and aux.count > 0
         aux.map { |t2| t2.text.strip unless t2.text.blank? }
       else
@@ -46,41 +46,72 @@ class ParseadorHtml
   end
 
   def extraer_texto
-    texto = primera_linea
-    l = @title_node.ancestors('tr').first.next.css('table tr td p font').map do |nodo|
-      parrafo contenido_nodo nodo
-    end
-    texto += l.compact.join("\n")
+    nodo = @nodo_titulo.ancestors('tr').first.next.css('table tr td')
+    ContenidoNodo.new.texto(nodo)
   end
 
-  def parrafo(str)
-    convertir_guiones limpiar_cadena str
+end
+
+class ContenidoNodo
+
+  def texto nodo
+    convertir_guiones(limpiar_cadena(texto_en_bruto(nodo)))
+  end
+
+  #========================
+  private
+  #========================
+
+  def texto_en_bruto nodo
+    if nodo.children.empty?
+      texto_elemento_unico(nodo)
+    else
+      texto_elemento_con_hijos(nodo)
+    end
+  end
+
+  def texto_elemento_unico(nodo)
+    if nodo_text?(nodo)
+      nodo.text.blank? ? nil : nodo.text
+    elsif nodo_element?(nodo)
+      "\n" if nodo.name == 'br'
+    end
+  end
+
+  def texto_elemento_con_hijos(nodo)
+    str = texto_hijos(nodo)
+    nodo_parrafo?(nodo) ? agregar_salto_de_linea(str) : str
+  end
+
+  def nodo_parrafo?(nodo)
+    nodo_element?(nodo) and (nodo.name == 'p' || nodo.name == 'font')
+  end
+
+  def nodo_element?(nodo)
+    nodo.kind_of?(Nokogiri::XML::Element)
+  end
+
+  def nodo_text?(nodo)
+    nodo.kind_of?(Nokogiri::XML::Text)
+  end
+
+  def texto_hijos(nodo)
+    nodo.children.collect{|nodo_hijo| texto_en_bruto(nodo_hijo) }.join
+  end
+
+  def agregar_salto_de_linea(str)
+    str = str[0..-3] if str[-2..-1] == "\r\n"
+    str[-1] == "\n" ? str : str + "\n"
   end
 
   def limpiar_cadena(str)
     return '' if str.blank?
-    str.strip.squeeze(' ').gsub(/ ?\r\n/, ' ').gsub(/\n\n ?/, "\n")
+    str.gsub(/ ?\r\n/, ' ').gsub(/(\n\n ?)|( \n)/, "\n").squeeze(' ')
   end
 
   def convertir_guiones(str)
     return '' if str.blank?
     str.gsub(/^-/, '—').gsub(/ -/, ' —').gsub(/-([.,;: ])/, '—\1')
-  end
-
-  def primera_linea
-    texto = ""
-    nodo = @title_node.ancestors('tr').first.next.css('table tr td > font').first
-    texto += parrafo(contenido_nodo(nodo)) if nodo
-    texto += "\n" unless texto.blank?
-    texto
-  end
-
-  def contenido_nodo nodo
-    nodo.children.collect{|a1| contenido_o_salto_de_linea(a1) }.compact.join
-  end
-
-  def contenido_o_salto_de_linea nodo
-    nodo.kind_of?(Nokogiri::XML::Element) && nodo.name == 'br' ? "\n" : nodo.content
   end
 
 end
