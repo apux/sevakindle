@@ -34,6 +34,28 @@ class ParseadorHtml
     @contenido_seccion_titulo ||= extraer_seccion_titulo
   end
 
+  # Extrae las cadenas de la seccion de titulo. Esta seccion generalmente se
+  # compone de tres elementos: el titulo de la publicacion, una nota, y el
+  # nombre del autor.
+  #
+  # La estructura HTML que recibe puede contener tres nodos, cada uno con un
+  # dato, o bien, un nodo con informacion anidada. Por ejemplo:
+  #
+  #     <font>Titulo</font>
+  #     <font>Nota</font>
+  #     <font>Nombre del autor</font>
+  #
+  #     <font>
+  #       <font>Titulo</font>
+  #       <font>Nota<font>
+  #     </font>
+  #     <font>Nombre del autor</font>
+  #
+  #
+  #     extraer_seccion_titulo     # => ['Titulo', 'Nota', 'Nombre del autor']
+  #
+  # Retorna un arreglo de dos o tres elementos, donde el primero es el titulo
+  #         de la publicacion y el ultimo el nombre del autor.
   def extraer_seccion_titulo
     nodos = @nodo_titulo.parent.children
     nodos.map { |nodo| cadena_seccion_titulo(nodo) }.flatten.compact

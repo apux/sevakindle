@@ -1,11 +1,10 @@
 .row
-  .span12.publicaciones_thumbnail
-    %ul.thumbnails
-
+  .span12.publicaciones
+    %ul.resumenes
       - @publicaciones.each do |publicacion|
-        %li.span6
-          =link_to(publicacion, class: 'thumbnail') do
+        %li.span5
+          =link_to(publicacion, class: 'resumen') do
             .titulo= publicacion.titulo
             .autor= publicacion.autor
             %br/
-            .resumen= simple_format truncate(publicacion.texto, length: 500)
+            .inicio= simple_format truncate(publicacion.texto, length: 500)
