@@ -56,3 +56,4 @@ end
 
 gem 'rieles'
 gem 'nokogiri'
+gem 'unicorn'
