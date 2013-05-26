@@ -35,19 +35,24 @@ class ParseadorHtml
   end
 
   def extraer_seccion_titulo
-    cadenas = @nodo_titulo.parent.children.map do |t1|
-      if aux = t1.css('font') and aux.count > 0
-        aux.map { |t2| t2.text.strip unless t2.text.blank? }
-      else
-        t1.text.strip unless t1.text.blank?
-      end
-    end
-    cadenas.flatten.compact
+    nodos = @nodo_titulo.parent.children
+    nodos.map { |nodo| cadena_seccion_titulo(nodo) }.flatten.compact
   end
 
   def extraer_texto
     nodo = @nodo_titulo.ancestors('tr').first.next.css('table tr td')
     ContenidoNodo.new.texto(nodo)
+  end
+
+  def cadena_seccion_titulo(nodo)
+    # multiples parrafos?
+    if nodos = nodo.css('font') and nodos.count > 0
+
+      # se extrae el contenido de cada parrafo interno
+      nodos.map { |interno| interno.text.strip unless interno.text.blank? }
+    else
+      nodo.text.strip unless nodo.text.blank?
+    end
   end
 
 end
@@ -96,7 +101,7 @@ class ContenidoNodo
   end
 
   def texto_hijos(nodo)
-    nodo.children.collect{|nodo_hijo| texto_en_bruto(nodo_hijo) }.join
+    nodo.children.map{|nodo_hijo| texto_en_bruto(nodo_hijo) }.join
   end
 
   def agregar_salto_de_linea(str)
