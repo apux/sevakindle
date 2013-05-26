@@ -4,9 +4,8 @@
 
       - @publicaciones.each do |publicacion|
         %li.span6
-          .thumbnail
+          =link_to(publicacion, class: 'thumbnail') do
             .titulo= publicacion.titulo
             .autor= publicacion.autor
             %br/
             .resumen= simple_format truncate(publicacion.texto, length: 500)
-            .ver_mas= link_to 'Leer completo', publicacion_path(publicacion)
