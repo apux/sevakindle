@@ -12,7 +12,7 @@ group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 
-group :develoment, :testing do
+group :development, :test do
   gem 'sqlite3'
 end
 
