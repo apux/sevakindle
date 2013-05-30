@@ -127,8 +127,9 @@ class ContenidoNodo
   end
 
   def agregar_salto_de_linea(str)
-    str = str[0..-3] if str[-2..-1] == "\r\n"
-    str[-1] == "\n" ? str : str + "\n"
+    # para asegurarse que solo se agrega un salto de linea, se eliminan los
+    # caracteres de salto de linea que traiga antes de agregar el nuevo
+    str.chomp + "\n"
   end
 
   def limpiar_cadena(str)
@@ -138,7 +139,7 @@ class ContenidoNodo
 
   def convertir_guiones(str)
     return '' if str.blank?
-    str.gsub(/^-/, '—').gsub(/ -/, ' —').gsub(/-([.,;: ])/, '—\1')
+    str.gsub(/(?<=\W)-|-(?=\W)/, '—')
   end
 
 end
