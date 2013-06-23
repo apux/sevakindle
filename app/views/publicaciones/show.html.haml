@@ -1,0 +1,8 @@
+- content_for :title, "#{@publicacion.titulo}"
+- content_for :author, "#{@publicacion.autor.nombre}"
+
+.title.nav-var
+  %h1= @publicacion.titulo
+  %h2= @publicacion.autor
+
+.content= simple_format @publicacion.texto
