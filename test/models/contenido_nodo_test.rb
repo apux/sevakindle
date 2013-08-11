@@ -68,7 +68,7 @@ cruel</font>
 
     it 'devuelve el texto con formato cursivas si un nodo indica ese formato' do
       nodo = Nokogiri.HTML('<font>Hola <i>mundo</i></font>')
-      ContenidoNodo.new.texto(nodo).must_equal "Hola <i>mundo</i>"
+      ContenidoNodo.new.texto(nodo).must_equal "Hola <em>mundo</em>\n"
     end
   end
 end

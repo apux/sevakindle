@@ -5,7 +5,10 @@
 class ContenidoNodo
 
   def texto nodo
-    limpiar_y_convertir_guiones texto_en_bruto(nodo)
+    str = texto_en_bruto(nodo)
+    str = limpiar_saltos_duplicados(str)
+    str = convertir_guiones(str)
+    str
   end
 
   #========================
@@ -34,7 +37,7 @@ class ContenidoNodo
     if nodo.paragraph?
       agregar_salto_de_linea(str)
     elsif nodo.i?
-      str.strip
+      "<em>#{str.strip}</em>"
     else
       str
     end
@@ -49,23 +52,18 @@ class ContenidoNodo
     str.gsub(/(^ )|( $)/, '') + "\n"
   end
 
-  def limpiar_y_convertir_guiones str
-    limpiar_saltos_duplicados(convertir_guiones(str))
-  end
-
   def limpiar_saltos_duplicados(str)
     return '' if str.blank?
     str.gsub(/(\n+ ?)|( \n+)/, "\n")
-  end
-
-  def convertir_guiones(str)
-    ConvertidorGuiones.convertir(str)
   end
 
   def eliminar_saltos(str)
     str.gsub(/ ?\r?\n/, ' ').squeeze(' ')
   end
 
+  def convertir_guiones(str)
+    ConvertidorGuiones.convertir(str)
+  end
 end
 
 module AdditionalNodeMethods
