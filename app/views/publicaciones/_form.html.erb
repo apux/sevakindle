@@ -1,11 +1,14 @@
 <%= form_for(@publicacion) do |f| %>
-  <%= render 'error_messages', target: @publicacion %>
+  <%= render 'error_messages', target: @publicacion, gender: 'female' %>
 
   <div class="field">
+    <%= f.check_box :leer_de_url %><%= f.label :leer_de_url %>
+  </div>
+  <div class="field not_for_url">
     <%= f.label :titulo %><br />
     <%= f.text_field :titulo %>
   </div>
-  <div class="field">
+  <div class="field not_for_url">
     <%= f.label :texto %><br />
     <%= f.text_area :texto %>
   </div>
@@ -13,9 +16,9 @@
     <%= f.label :url_original %><br />
     <%= f.text_field :url_original %>
   </div>
-  <div class="field">
-    <%= f.label :autor_id %><br />
-    <%= f.text_field :autor_id %>
+  <div class="field not_for_url">
+    <%= f.label :nombre_autor %><br />
+    <%= f.text_field :nombre_autor %>
   </div>
   <div class="field">
     <%= f.label :tipo_id %><br />
