@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 group :production do
@@ -15,7 +15,7 @@ group :development, :test do
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -60,6 +60,6 @@ group :development, :test do
   gem 'minitest-rails'
 end
 
-gem 'rieles'
+gem 'rieles', github: 'LogicalBricks/rieles', branch: 'rails4'
 gem 'nokogiri'
 gem 'unicorn'

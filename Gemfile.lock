@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/LogicalBricks/rieles.git
+  revision: 86d8fbc235e0ca39a221397f2affa302e0e3b8d4
+  branch: rails4
+  specs:
+    rieles (0.1.0)
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/heroku/rails3_serve_static_assets.git
   revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
   specs:
@@ -13,25 +21,25 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.0.rc2)
-      actionpack (= 4.0.0.rc2)
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
       mail (~> 2.5.3)
-    actionpack (4.0.0.rc2)
-      activesupport (= 4.0.0.rc2)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.0.rc2)
-      activesupport (= 4.0.0.rc2)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
-    activerecord (4.0.0.rc2)
-      activemodel (= 4.0.0.rc2)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.0.rc2)
+      activesupport (= 4.0.0)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.0.rc2)
+    activesupport (4.0.0)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
@@ -41,7 +49,7 @@ GEM
       railties (>= 3.0)
       sass (>= 3.2)
     arel (4.0.0)
-    atomic (1.1.9)
+    atomic (1.1.12)
     builder (3.1.4)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -49,7 +57,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.2)
+    coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -59,7 +67,7 @@ GEM
     i18n (0.6.4)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
-    jquery-rails (3.0.1)
+    jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
@@ -68,39 +76,38 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    mini_portile (0.5.0)
+    mini_portile (0.5.1)
     minitest (4.7.5)
     minitest-rails (0.9.2)
       minitest (~> 4.7)
       rails (>= 3.0)
-    multi_json (1.7.7)
+    multi_json (1.7.8)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    pg (0.15.1)
+    pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.0.rc2)
-      actionmailer (= 4.0.0.rc2)
-      actionpack (= 4.0.0.rc2)
-      activerecord (= 4.0.0.rc2)
-      activesupport (= 4.0.0.rc2)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.0.rc2)
+      railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
-    railties (4.0.0.rc2)
-      actionpack (= 4.0.0.rc2)
-      activesupport (= 4.0.0.rc2)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rieles (0.0.6)
-    sass (3.2.9)
-    sass-rails (4.0.0.rc2)
+    sass (3.2.10)
+    sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
@@ -118,16 +125,16 @@ GEM
       sprockets (~> 2.8)
     sqlite3 (1.3.7)
     thor (0.18.1)
-    thread_safe (0.1.0)
+    thread_safe (0.1.2)
       atomic
     tilt (1.4.1)
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.2.0)
+    turbolinks (1.3.0)
       coffee-rails
     tzinfo (0.3.37)
-    uglifier (2.1.1)
+    uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.3)
@@ -147,11 +154,11 @@ DEPENDENCIES
   minitest-rails
   nokogiri
   pg
-  rails (= 4.0.0.rc2)
+  rails (= 4.0.0)
   rails3_serve_static_assets!
   rails_log_stdout!
-  rieles
-  sass-rails (~> 4.0.0.rc1)
+  rieles!
+  sass-rails
   sdoc
   sqlite3
   turbolinks
