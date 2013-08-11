@@ -58,6 +58,7 @@ end
 
 group :development, :test do
   gem 'minitest-rails'
+  gem 'pry'
 end
 
 gem 'rieles', github: 'LogicalBricks/rieles', branch: 'rails4'
