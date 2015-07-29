@@ -3,7 +3,7 @@ require "test_helper"
 describe PublicacionesController do
 
   before do
-    @publicacion = publicaciones(:one)
+    @publicacion = publicaciones(:quijote)
   end
 
   it "must get index" do
@@ -19,7 +19,15 @@ describe PublicacionesController do
 
   it "must create publicacion" do
     assert_difference('Publicacion.count') do
-      post :create, publicacion: {  }
+      post(
+        :create, 
+        publicacion: {
+          titulo: "El Ingenioso Hidalgo Don Quijote de La Mancha",
+          texto: "En un lugar de La Mancha de cuyo nombre no quiero acordarme...",
+          autor_id: autores(:cervantes).id,
+          tipo_id: tipos_publicaciones(:novela).id
+        }
+      )
     end
 
     assert_redirected_to publicacion_path(assigns(:publicacion))
@@ -36,7 +44,16 @@ describe PublicacionesController do
   end
 
   it "must update publicacion" do
-    put :update, id: @publicacion, publicacion: {  }
+    put(
+      :update,
+      id: @publicacion,
+      publicacion: {
+        titulo: "El Ingenioso Hidalgo Don Quijote de La Mancha",
+        texto: "En un lugar de La Mancha de cuyo nombre no quiero acordarme...",
+        autor_id: autores(:cervantes).id,
+        tipo_id: tipos_publicaciones(:novela).id
+      }
+    )
     assert_redirected_to publicacion_path(assigns(:publicacion))
   end
 

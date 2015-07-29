@@ -1,22 +1,24 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+ruby "2.1.6"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.13'
 
 # Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
-  gem 'rails_12factor', group: :production
+  gem 'rails_12factor'
 end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'minitest-rails'
+  gem 'pry'
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -30,7 +32,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails'
+gem 'anjlab-bootstrap-rails', '~> 2.3.1', require: 'bootstrap-rails'
 
 gem 'haml'
 
@@ -46,7 +48,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -56,11 +58,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-group :development, :test do
-  gem 'minitest-rails'
-  gem 'pry'
-end
 
 gem 'rieles', github: 'LogicalBricks/rieles', branch: 'rails4'
 gem 'nokogiri'

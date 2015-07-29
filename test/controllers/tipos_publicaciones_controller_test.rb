@@ -3,7 +3,7 @@ require "test_helper"
 describe TiposPublicacionesController do
 
   before do
-    @tipo_publicacion = tipos_publicaciones(:one)
+    @tipo_publicacion = tipos_publicaciones(:novela)
   end
 
   it "must get index" do
@@ -19,7 +19,7 @@ describe TiposPublicacionesController do
 
   it "must create tipo_publicacion" do
     assert_difference('TipoPublicacion.count') do
-      post :create, tipo_publicacion: {  }
+      post :create, tipo_publicacion: { nombre: 'Ensayo' }
     end
 
     assert_redirected_to tipo_publicacion_path(assigns(:tipo_publicacion))
@@ -36,7 +36,7 @@ describe TiposPublicacionesController do
   end
 
   it "must update tipo_publicacion" do
-    put :update, id: @tipo_publicacion, tipo_publicacion: {  }
+    put :update, id: @tipo_publicacion, tipo_publicacion: { nombre: 'Ensayo' }
     assert_redirected_to tipo_publicacion_path(assigns(:tipo_publicacion))
   end
 

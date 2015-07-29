@@ -1,0 +1,13 @@
+quijote:
+  titulo: El Ingenioso Hidalgo Don Quijote de La Mancha
+  texto: En un lugar de La Mancha de cuyo nombre no quiero acordarme...
+  url_original:
+  autor: cervantes
+  tipo: novela
+
+romeo:
+  titulo: Romeo y Julieta
+  texto:  Los comentadores discuerdan considerablemente al querer determinar la época en que fue concluida la pieza que traducimos a continuación.
+  url_original:
+  autor: shakespeare
+  tipo: novela

@@ -3,7 +3,7 @@ require "test_helper"
 describe AutoresController do
 
   before do
-    @autor = autores(:one)
+    @autor = autores(:cervantes)
   end
 
   it "must get index" do
@@ -19,7 +19,7 @@ describe AutoresController do
 
   it "must create autor" do
     assert_difference('Autor.count') do
-      post :create, autor: {  }
+      post :create, autor: { nombre: 'Gabriel García Márquez' }
     end
 
     assert_redirected_to autor_path(assigns(:autor))
@@ -36,7 +36,7 @@ describe AutoresController do
   end
 
   it "must update autor" do
-    put :update, id: @autor, autor: {  }
+    put :update, id: @autor, autor: { nombre: 'Albert Camus'  }
     assert_redirected_to autor_path(assigns(:autor))
   end
 
