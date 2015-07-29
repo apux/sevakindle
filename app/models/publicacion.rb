@@ -27,27 +27,31 @@ class Publicacion < ActiveRecord::Base
 
   def get_from_url
     return if self.url_original.blank? or self.texto.present?
+
     self.url_original.strip!
-    parseador = ParseadorHtml.new(html_file)
     self.titulo = parseador.titulo
-    self.autor = get_autor(parseador.autor)
-    self.texto = parseador.texto
+    self.texto  = parseador.texto
+    self.autor  = find_or_create_autor(parseador.autor)
   end
 
-  def get_autor(nombre)
+  def find_or_create_autor(nombre)
     Autor.where(nombre: nombre).first_or_create
   end
 
   def set_autor
-    self.autor = get_autor(nombre_autor)
+    self.autor = find_or_create_autor(nombre_autor)
   end
 
   def convertir_guiones
     self.texto = ConvertidorGuiones.convertir(self.texto)
   end
 
+  def parseador
+    @parseador ||= ParseadorHtml.new(html_file)
+  end
+
   def html_file
     require 'open-uri'
-    open(self.url_original)
+    Nokogiri::HTML(open(url_original))
   end
 end

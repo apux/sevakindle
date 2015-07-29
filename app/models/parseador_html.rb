@@ -1,8 +1,6 @@
-require 'nokogiri'
-
 class ParseadorHtml
   def initialize(input)
-    @doc = Nokogiri::HTML(input)
+    @doc = input
     @nodo_titulo = @doc.css('center > table > tr > td > font').first
   end
 
@@ -62,7 +60,7 @@ class ParseadorHtml
   end
 
   def extraer_texto
-    nodo = @nodo_titulo.ancestors('tr').first.next.css('table tr td')
+    nodo = @nodo_titulo.ancestors('tr').first.next.next.css('table tr td')
     ContenidoNodo.new.texto(nodo)
   end
 

@@ -3,7 +3,8 @@ require "test_helper"
 describe ParseadorHtml do
   describe 'wakefield' do
     before do
-      html = File.open(Rails.root.to_s + '/test/fixtures/wakefield.html')
+      file = File.open(Rails.root.to_s + '/test/fixtures/wakefield.html')
+      html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
 
@@ -22,7 +23,8 @@ describe ParseadorHtml do
 
   describe 'un canario de regalo' do
     before do
-      html = File.open(Rails.root.to_s + '/test/fixtures/canario.html')
+      file = File.open(Rails.root.to_s + '/test/fixtures/canario.html')
+      html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
 
@@ -41,7 +43,8 @@ describe ParseadorHtml do
 
   describe 'matrimonio a la moda' do
     before do
-      html = File.open(Rails.root.to_s + '/test/fixtures/matrimonio.html')
+      file = File.open(Rails.root.to_s + '/test/fixtures/matrimonio.html')
+      html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
 
@@ -60,7 +63,8 @@ describe ParseadorHtml do
 
   describe 'el rastro de tu sangre en la nieve' do
     before do
-      html = File.open(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.html')
+      file = File.open(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.html')
+      html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
 
@@ -79,7 +83,8 @@ describe ParseadorHtml do
 
   describe 'arabia' do
     before do
-      html = File.open(Rails.root.to_s + '/test/fixtures/arabia.html')
+      file = File.open(Rails.root.to_s + '/test/fixtures/arabia.html')
+      html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
 
