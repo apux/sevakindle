@@ -15,9 +15,7 @@
       <% @autores.each do |autor| %>
         <tr>
           <td><%= autor.nombre %></td>
-          <td><%= link_to 'Mostrar', autor %></td>
-          <td><%= link_to 'Editar', edit_autor_path(autor) %></td>
-          <td><%= link_to 'Eliminar', autor, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+          <td><%= link_to 'Ver cuentos', publicaciones_path(autor_id: autor) %></td>
         </tr>
       <% end %>
     </tbody>

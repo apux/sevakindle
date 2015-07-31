@@ -4,7 +4,7 @@ class PublicacionesController < ApplicationController
   # GET /publicaciones
   # GET /publicaciones.json
   def index
-    @publicaciones = Publicacion.all
+    @publicaciones = cargar_publicaciones
   end
 
   # GET /publicaciones/1
@@ -70,5 +70,13 @@ class PublicacionesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def publicacion_params
       params.require(:publicacion).permit(:titulo, :texto, :url_original, :nombre_autor, :tipo_id, :leer_de_url)
+    end
+
+    def cargar_publicaciones
+      if autor = Autor.find_by_id(params[:autor_id])
+        autor.publicaciones
+      else
+        Publicacion.all
+      end
     end
 end
