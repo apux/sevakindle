@@ -20,3 +20,5 @@
 .rvmrc
 .ruby-gemset
 .ruby-version
+
+/config/secrets.yml
