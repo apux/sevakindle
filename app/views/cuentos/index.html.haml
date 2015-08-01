@@ -1,10 +1,4 @@
 .row
   .publicaciones
     %ul.resumenes
-      - @cuentos.each do |cuento|
-        %li.col-lg-5
-          = link_to(cuento, class: 'resumen') do
-            .titulo= cuento.titulo
-            .autor= cuento.autor
-            %br/
-            .inicio= simple_format truncate(cuento.texto, length: 500, separator: ' ')
+      = render partial: "publicaciones/publicacion", collection: @cuentos
