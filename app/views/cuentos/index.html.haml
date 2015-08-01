@@ -1,8 +1,8 @@
 .row
-  .span12.cuentos
+  .publicaciones
     %ul.resumenes
       - @cuentos.each do |cuento|
-        %li.span5
+        %li.col-lg-5
           = link_to(cuento, class: 'resumen') do
             .titulo= cuento.titulo
             .autor= cuento.autor
