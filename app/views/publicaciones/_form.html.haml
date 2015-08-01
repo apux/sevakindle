@@ -1,0 +1,27 @@
+= form_for(@publicacion) do |f|
+  = render 'error_messages', target: @publicacion, gender: 'female'
+  .field
+    = f.check_box :leer_de_url
+    = f.label :leer_de_url
+  .field.not_for_url
+    = f.label :titulo
+    %br/
+    = f.text_field :titulo
+  .field.not_for_url
+    = f.label :texto
+    %br/
+    = f.text_area :texto
+  .field
+    = f.label :url_original
+    %br/
+    = f.text_field :url_original
+  .field.not_for_url
+    = f.label :nombre_autor
+    %br/
+    = f.text_field :nombre_autor
+  .field
+    = f.label :tipo_id
+    %br/
+    = f.select :tipo_id, TipoPublicacion.all.map{|tp| [tp.nombre, tp.id]}
+  .actions
+    = f.submit
