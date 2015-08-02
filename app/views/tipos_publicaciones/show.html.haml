@@ -1,0 +1,7 @@
+%p
+  %b Nombre:
+  = @tipo_publicacion.nombre
+
+= link_to 'Editar', edit_tipo_publicacion_path(@tipo_publicacion)
+\|
+= link_to 'Listado', tipos_publicaciones_path

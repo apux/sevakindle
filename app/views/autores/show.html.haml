@@ -1,0 +1,8 @@
+%p#notice= notice
+%p
+  %b Nombre:
+  = @autor.nombre
+
+= link_to 'Editar', edit_autor_path(@autor)
+\|
+= link_to 'Listado', autores_path

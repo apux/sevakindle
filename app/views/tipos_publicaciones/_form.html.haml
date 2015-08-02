@@ -1,0 +1,8 @@
+= form_for(@tipo_publicacion) do |f|
+  = render 'error_messages', target: @tipo_publicacion
+  .field
+    = f.label :nombre
+    %br/
+    = f.text_field :nombre
+  .actions
+    = f.submit
