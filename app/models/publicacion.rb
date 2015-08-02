@@ -22,11 +22,11 @@ class Publicacion < ActiveRecord::Base
   #======================
 
   def leer_de_url?
-    leer_de_url.present?
+    ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include? leer_de_url
   end
 
   def get_from_url
-    return if self.url_original.blank? or self.texto.present?
+    return if self.texto.present?
 
     self.url_original.strip!
     self.titulo = parseador.titulo
