@@ -60,7 +60,7 @@ class ParseadorHtml
   end
 
   def extraer_texto
-    nodo = @nodo_titulo.ancestors('tr').first.next.next.css('table tr td')
+    nodo = @nodo_titulo.ancestors('tr').first.next_element.css('table tr td')
     ContenidoNodo.new.texto(nodo)
   end
 

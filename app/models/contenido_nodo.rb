@@ -4,7 +4,7 @@
 # el texto de todos los elementos hijos.
 class ContenidoNodo
 
-  def texto nodo
+  def texto(nodo)
     str = texto_en_bruto(nodo)
     str = limpiar_saltos_duplicados(str)
     str = convertir_guiones(str)
@@ -15,7 +15,7 @@ class ContenidoNodo
   private
   #========================
 
-  def texto_en_bruto nodo
+  def texto_en_bruto(nodo)
     nodo.extend(AdditionalNodeMethods)
     if nodo.has_no_children?
       texto_elemento_unico(nodo)
