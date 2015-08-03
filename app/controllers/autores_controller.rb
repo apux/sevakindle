@@ -4,7 +4,7 @@ class AutoresController < ApplicationController
   # GET /autores
   # GET /autores.json
   def index
-    @autores = Autor.all
+    @autores = Autor.order(:nombre)
   end
 
   # GET /autores/1
