@@ -1,6 +1,5 @@
-%li.col-lg-5
-  = link_to(publicacion, class: 'resumen') do
-    .titulo= publicacion.titulo
-    .autor= publicacion.autor
-    %br/
-    .inicio= simple_format truncate(publicacion.texto, length: 500)
+.col-lg-6
+  = link_to(publicacion, class: 'summary') do
+    .title= publicacion.titulo
+    .author= publicacion.autor
+    .summary-text= simple_format truncate(publicacion.texto, length: 500)

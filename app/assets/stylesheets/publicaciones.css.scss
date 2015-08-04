@@ -1,44 +1,65 @@
 // Place all the styles related to the publicaciones controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.titulo {
-  font-weight: bold;
-}
 
-.autor {
-  font-style: italic;
-}
+.publicaciones {
+  .row {
+    -moz-column-width: 25em;
+    -webkit-column-width: 25em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em;
+  }
 
-.resumenes {
-  list-style: none outside none;
-  margin-left: 30px;
-
-  li {
-    margin-bottom: 20px;
+  .row > .col-lg-6 {
+    display: inline-block;
+    padding: 0.33rem;
+    width:  100%;
+    float: none;
   }
 }
 
-.resumen {
-  border: 1px solid #DDDDDD;
-  border-radius: 4px 4px 4px 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+.title {
+  font-weight: bold;
+}
+
+.author {
+  font-style: italic;
+  color: gray;
+  margin-bottom: 1em;
+}
+
+h2.author {
+  margin-top: 0;
+  font-size: 1.7em;
+}
+
+a.summary {
   display: block;
-  line-height: 20px;
-  padding: 4px;
-  transition: all 0.2s ease-in-out 0s;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-bottom: 20px;
+  min-height: 20px;
+  padding: 19px;
   color: black;
   &:hover {
     color: black;
     text-decoration: none;
-    border-color: gray;
-    box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
     border: 1px solid #0088cc;
   }
   &:visited { color: black; }
+
+  .texto-resumen {
+    p {
+      padding-left: 20px;
+    }
+  }
 }
 
-.inicio {
+.content {
   p {
-    padding-left: 20px;
+    font-family: Verdana;
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
