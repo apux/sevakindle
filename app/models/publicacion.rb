@@ -17,9 +17,7 @@ class Publicacion < ActiveRecord::Base
 
   # == Methods ==
 
-  #======================
-  private
-  #======================
+private
 
   def leer_de_url?
     ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include? leer_de_url
