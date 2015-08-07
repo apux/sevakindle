@@ -16,9 +16,7 @@ class ParseadorHtml
     @texto ||= extraer_texto
   end
 
-  #=======================
-  private
-  #=======================
+private
 
   def extraer_titulo
     contenido_seccion_titulo.first

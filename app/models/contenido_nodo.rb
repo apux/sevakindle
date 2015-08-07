@@ -8,12 +8,11 @@ class ContenidoNodo
     str = texto_en_bruto(nodo)
     str = limpiar_saltos_duplicados(str)
     str = convertir_guiones(str)
-    str
+    str = eliminar_fin(str)
+    str.chomp
   end
 
-  #========================
-  private
-  #========================
+private
 
   def texto_en_bruto(nodo)
     nodo.extend(AdditionalNodeMethods)
@@ -49,12 +48,12 @@ class ContenidoNodo
 
   def agregar_salto_de_linea(str)
     return '' if str.blank?
-    str.gsub(/(^ )|( $)/, '') + "\n"
+    str.gsub(/(^ )|( $)/, '') + "\n\n"
   end
 
   def limpiar_saltos_duplicados(str)
     return '' if str.blank?
-    str.gsub(/(\n+ ?)|( \n+)/, "\n")
+    str.gsub(/(\n+ ?)|( \n+)/, "\n\n")
   end
 
   def eliminar_saltos(str)
@@ -63,6 +62,10 @@ class ContenidoNodo
 
   def convertir_guiones(str)
     ConvertidorGuiones.convertir(str)
+  end
+
+  def eliminar_fin(str)
+    str.gsub(/FIN\n\n\z/, "")
   end
 end
 
@@ -74,4 +77,3 @@ module AdditionalNodeMethods
   def br?; element? and name == 'br'; end
   def has_no_children?; children.empty?; end
 end
-
