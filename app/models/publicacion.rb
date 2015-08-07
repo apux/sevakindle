@@ -17,6 +17,10 @@ class Publicacion < ActiveRecord::Base
 
   # == Methods ==
 
+  def nombre_autor
+    @nombre_autor ||= autor.to_s if autor
+  end
+
 private
 
   def leer_de_url?
