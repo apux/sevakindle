@@ -3,7 +3,7 @@ require "test_helper"
 describe ParseadorHtml do
 
   def resultado_de(nombre)
-    File.read(Rails.root.to_s + "/test/fixtures/#{nombre}.txt")
+    File.read(Rails.root.to_s + "/test/fixtures/#{nombre}.procesado.txt")
   end
 
   def original_de(nombre)
