@@ -7,7 +7,7 @@ describe ParseadorHtml do
   end
 
   def original_de(nombre)
-    File.open(Rails.root.to_s + "/test/fixtures/#{nombre}.html")
+    File.open(Rails.root.to_s + "/test/fixtures/#{nombre}.original.html")
   end
 
   describe 'wakefield' do
