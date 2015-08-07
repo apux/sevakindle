@@ -1,9 +1,18 @@
 require "test_helper"
 
 describe ParseadorHtml do
+
+  def resultado_de(nombre)
+    File.read(Rails.root.to_s + "/test/fixtures/#{nombre}.txt")
+  end
+
+  def original_de(nombre)
+    File.open(Rails.root.to_s + "/test/fixtures/#{nombre}.html")
+  end
+
   describe 'wakefield' do
     before do
-      file = File.open(Rails.root.to_s + '/test/fixtures/wakefield.html')
+      file = original_de('wakefield')
       html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
@@ -17,13 +26,13 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/wakefield.txt')
+      @parseador.texto.must_equal resultado_de('wakefield')
     end
   end
 
   describe 'un canario de regalo' do
     before do
-      file = File.open(Rails.root.to_s + '/test/fixtures/canario.html')
+      file = original_de('canario')
       html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
@@ -37,13 +46,13 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/canario.txt')
+      @parseador.texto.must_equal resultado_de('canario')
     end
   end
 
   describe 'matrimonio a la moda' do
     before do
-      file = File.open(Rails.root.to_s + '/test/fixtures/matrimonio.html')
+      file = original_de('matrimonio')
       html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
@@ -57,13 +66,13 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/matrimonio.txt')
+      @parseador.texto.must_equal resultado_de('matrimonio')
     end
   end
 
   describe 'el rastro de tu sangre en la nieve' do
     before do
-      file = File.open(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.html')
+      file = original_de('el_rastro_de_tu_sangre_en_la_nieve')
       html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
@@ -77,13 +86,13 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/el_rastro_de_tu_sangre_en_la_nieve.txt')
+      @parseador.texto.must_equal resultado_de('el_rastro_de_tu_sangre_en_la_nieve')
     end
   end
 
   describe 'arabia' do
     before do
-      file = File.open(Rails.root.to_s + '/test/fixtures/arabia.html')
+      file = original_de('arabia')
       html = Nokogiri::HTML(file)
       @parseador = ParseadorHtml.new(html)
     end
@@ -97,7 +106,7 @@ describe ParseadorHtml do
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal File.read(Rails.root.to_s + '/test/fixtures/arabia.txt')
+      @parseador.texto.must_equal resultado_de('arabia')
     end
   end
 end
