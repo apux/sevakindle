@@ -14,8 +14,9 @@ class Publicacion < ActiveRecord::Base
   scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre" => 'Cuento') }
 
   # == Callbacks ==
-  before_validation :get_from_url, if: :leer_de_url?
-  before_validation :convertir_guiones, :set_autor, unless: :leer_de_url?
+  before_validation :obtener_de_url, if: :leer_de_url?
+  before_validation :obtener_autor_de_nombre, unless: :leer_de_url?
+  before_validation :formatear_texto
 
   # == Methods ==
 
@@ -26,10 +27,10 @@ class Publicacion < ActiveRecord::Base
 private
 
   def leer_de_url?
-    ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include? leer_de_url
+    ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include?(leer_de_url)
   end
 
-  def get_from_url
+  def obtener_de_url
     return if self.texto.present?
 
     self.url_original.strip!
@@ -38,16 +39,16 @@ private
     self.autor  = find_or_create_autor(parseador.autor)
   end
 
+  def obtener_autor_de_nombre
+    self.autor = find_or_create_autor(nombre_autor)
+  end
+
   def find_or_create_autor(nombre)
     Autor.where(nombre: nombre).first_or_create
   end
 
-  def set_autor
-    self.autor = find_or_create_autor(nombre_autor)
-  end
-
-  def convertir_guiones
-    self.texto = ConvertidorGuiones.convertir(self.texto)
+  def formatear_texto
+    self.texto = FormateadorCadenaSimple.formatear(texto)
   end
 
   def parseador
