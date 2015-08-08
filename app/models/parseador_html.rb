@@ -59,7 +59,8 @@ private
 
   def extraer_texto
     nodo = @nodo_titulo.ancestors('tr').first.next_element.css('table tr td')
-    ContenidoNodo.new.texto(nodo)
+    texto = ContenidoNodo.new.texto(nodo)
+    FormateadorCadenaSimple.formatear(texto)
   end
 
   def cadena_seccion_titulo(nodo)
