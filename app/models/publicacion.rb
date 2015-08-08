@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Publicacion < ActiveRecord::Base
   attr_accessor :leer_de_url, :nombre_autor
 
@@ -18,7 +20,7 @@ class Publicacion < ActiveRecord::Base
   # == Methods ==
 
   def nombre_autor
-    @nombre_autor ||= autor.to_s if autor
+    @nombre_autor ||= autor.to_s
   end
 
 private
@@ -53,7 +55,7 @@ private
   end
 
   def html_file
-    require 'open-uri'
     Nokogiri::HTML(open(url_original))
   end
+
 end
