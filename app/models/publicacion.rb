@@ -31,8 +31,6 @@ private
   end
 
   def obtener_de_url
-    return if self.texto.present?
-
     self.url_original.strip!
     self.titulo = parseador.titulo
     self.texto  = parseador.texto
