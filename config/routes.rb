@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  resources :publicaciones
-
   resources :tipos_publicaciones
 
-  resources :autores
+  resources :autores, only: :index
 
-  resources :cuentos, only: :index
+  resources :autores, except: :index, path: '/' do
+    resources :publicaciones, only: [:index, :show], path: '/'
+  end
+
+  resources :publicaciones, only: :index, path: '/'
+
+  resources :publicaciones, except: [:index, :show]
+
+  resources :cuentos, only: :index, path: '/'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

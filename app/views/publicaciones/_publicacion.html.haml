@@ -1,5 +1,5 @@
 .col-lg-6
-  = link_to(publicacion, class: 'summary') do
+  = link_to([publicacion.autor, publicacion], class: 'summary') do
     .title= publicacion.titulo
     .author= publicacion.autor
     .summary-text= simple_format truncate(publicacion.texto, length: 500)

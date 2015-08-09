@@ -34,7 +34,7 @@ describe PublicacionesController do
   end
 
   it "must show publicacion" do
-    get :show, id: @publicacion
+    get :show, id: @publicacion, autor_id: @publicacion.autor
     assert_response :success
   end
 

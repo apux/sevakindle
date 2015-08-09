@@ -73,10 +73,8 @@ class PublicacionesController < ApplicationController
     end
 
     def cargar_publicaciones
-      if autor = Autor.find_by_id(params[:autor_id])
-        autor.publicaciones
-      else
-        Publicacion.all
-      end
+      Autor.friendly.find(params[:autor_id]).publicaciones
+    rescue ActiveRecord::RecordNotFound
+      Publicacion.all
     end
 end

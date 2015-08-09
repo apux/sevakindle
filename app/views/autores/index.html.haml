@@ -11,7 +11,7 @@
       - @autores.each do |autor|
         %tr
           %td= autor.nombre
-          %td= link_to 'Ver cuentos', publicaciones_path(autor_id: autor), class: "btn btn-primary"
+          %td= link_to 'Ver cuentos', autor_publicaciones_path(autor), class: "btn btn-primary"
 - else
   %div
     %h3 No se encontraron Autores
