@@ -2,8 +2,6 @@ require 'open-uri'
 
 class Publicacion < ActiveRecord::Base
   attr_accessor :leer_de_url, :nombre_autor
-  include FriendlyId
-  friendly_id :titulo, :use => :slugged
 
   # == Associations ==
   belongs_to :autor
@@ -19,6 +17,11 @@ class Publicacion < ActiveRecord::Base
   before_validation :obtener_de_url, if: :leer_de_url?
   before_validation :obtener_autor_de_nombre, unless: :leer_de_url?
   before_validation :formatear_texto
+
+  # FriendlyId executes a before_validation callback so it need to be placed
+  # after our callbacks
+  include FriendlyId
+  friendly_id :titulo, :use => :slugged
 
   # == Methods ==
 
