@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   resources :autores, only: :index
 
+  resources :publicaciones, except: [:index]
+
   resources :autores, except: :index, path: '/' do
     resources :publicaciones, only: [:index, :show], path: '/'
   end
 
   resources :publicaciones, only: :index, path: '/'
-
-  resources :publicaciones, except: [:index, :show]
 
   resources :cuentos, only: :index, path: '/'
 

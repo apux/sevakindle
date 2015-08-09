@@ -1,15 +1,16 @@
 class PublicacionesController < ApplicationController
-  before_action :set_publicacion, only: [:show, :edit, :update, :destroy]
+  before_action :set_publicacion, only: [:edit, :update, :destroy]
 
   # GET /publicaciones
   # GET /publicaciones.json
   def index
-    @publicaciones = cargar_publicaciones
+    @publicaciones = publicaciones_scope.all
   end
 
   # GET /publicaciones/1
   # GET /publicaciones/1.json
   def show
+    @publicacion = publicaciones_scope.friendly.find(params[:id])
   end
 
   # GET /publicaciones/new
@@ -28,7 +29,7 @@ class PublicacionesController < ApplicationController
 
     respond_to do |format|
       if @publicacion.save
-        format.html { redirect_to @publicacion, notice: 'Publicacion was successfully created.' }
+        format.html { redirect_to [@publicacion.autor, @publicacion], notice: 'Publicacion was successfully created.' }
         format.json { render action: 'show', status: :created, location: @publicacion }
       else
         format.html { render action: 'new' }
@@ -67,14 +68,14 @@ class PublicacionesController < ApplicationController
       @publicacion = Publicacion.friendly.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def publicacion_params
-      params.require(:publicacion).permit(:titulo, :texto, :url_original, :nombre_autor, :tipo_id, :leer_de_url)
-    end
-
-    def cargar_publicaciones
+    def publicaciones_scope
       Autor.friendly.find(params[:autor_id]).publicaciones
     rescue ActiveRecord::RecordNotFound
       Publicacion.all
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def publicacion_params
+      params.require(:publicacion).permit(:titulo, :texto, :url_original, :nombre_autor, :tipo_id, :leer_de_url)
     end
 end

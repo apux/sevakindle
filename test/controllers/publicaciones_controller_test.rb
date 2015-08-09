@@ -30,7 +30,7 @@ describe PublicacionesController do
       )
     end
 
-    assert_redirected_to publicacion_path(assigns(:publicacion))
+    assert_redirected_to autor_publicacion_path(assigns(:publicacion).autor, assigns(:publicacion))
   end
 
   it "must show publicacion" do
