@@ -64,7 +64,7 @@ class AutoresController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_autor
-      @autor = Autor.find(params[:id])
+      @autor = Autor.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
