@@ -9,6 +9,7 @@ class Publicacion < ActiveRecord::Base
 
   # == Validations ==
   validates :titulo, :texto, presence: true
+  validates :titulo, uniqueness: { scope: :autor_id }
 
   # == Scopes ==
   scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre" => 'Cuento') }
