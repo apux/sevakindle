@@ -2,6 +2,8 @@ require 'open-uri'
 
 class Publicacion < ActiveRecord::Base
   attr_accessor :leer_de_url, :nombre_autor
+  include FriendlyId
+  friendly_id :titulo, :use => :slugged
 
   # == Associations ==
   belongs_to :autor
