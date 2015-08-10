@@ -23,7 +23,7 @@
             %li{:role => "presentation", class: controller_name == 'cuentos' || controller_name == 'publicaciones' ? "active" : ""}= link_to "Cuentos", cuentos_path
             %li{:role => "presentation", class: controller_name == 'autores' ? "active" : "" }= link_to "Autores", autores_path
         %h3.text-muted Sevakindle
-      .row
+      .content
         - if notice
           .alert.alert-success.alert-dismissible{:role => "alert"}
             %button.close{"data-dismiss" => "alert"} ×
