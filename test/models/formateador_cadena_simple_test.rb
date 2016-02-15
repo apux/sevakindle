@@ -66,4 +66,25 @@ describe FormateadorCadenaSimple do
     end
   end # describe .convertir_guiones
 
+  describe '#convertir_espacios' do
+    it 'regresa la misma cadena si no tiene espacios &nbsp;' do
+      str = "hola mundo"
+      resultado = "hola mundo"
+      FormateadorCadenaSimple.limpiar_espacios(str).must_equal(resultado)
+    end
+
+    it 'regresa la cadena con espacios en lugar de &nbsp;' do
+      str = "hola" << 160 << "mundo"
+      resultado = "hola mundo"
+      FormateadorCadenaSimple.limpiar_espacios(str).must_equal(resultado)
+    end
+
+    it 'regresa la cadena sin espacios duplicados en lugar' do
+      str = "hola " << 160 << " mundo"
+      resultado = "hola mundo"
+      FormateadorCadenaSimple.limpiar_espacios(str).must_equal(resultado)
+    end
+
+  end # describe #convertir_espacios
+
 end

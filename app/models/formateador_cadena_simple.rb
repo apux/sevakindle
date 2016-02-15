@@ -16,7 +16,9 @@ class FormateadorCadenaSimple
     def formatear(str)
       convertir_guiones(
         eliminar_fin(
-          eliminar_saltos_duplicados(str)
+          eliminar_saltos_duplicados(
+            limpiar_espacios(str)
+          )
         )
       )
     end
@@ -82,6 +84,25 @@ class FormateadorCadenaSimple
     # Retorna una cadena con los guiones convertidos.
     def convertir_guiones(str)
       str.gsub(/(?<=^|\W)-|-(?=\W)/, '—')
+    end
+
+    # Convierte los espacios generados por &npbs; a espacios normales y elimina
+    # espacios duplicados.
+    #
+    # str - La cadena con espacios
+    #
+    # Ejemplos
+    #
+    #     FormateadorCadenaSimple.limiar_espacios("Hola mundo")
+    #     # => "Hola mundo"
+    #
+    #     FormateadorCadenaSimple.limiar_espacios("Hola   mundo")
+    #     # => "Hola mundo"
+    #
+    #     FormateadorCadenaSimple.limiar_espacios("Hola " << 160 << " mundo")
+    #     # => "Hola mundo"
+    def limpiar_espacios(str)
+      str.gsub("" << 160, ' ').squeeze(' ')
     end
   end
 end
