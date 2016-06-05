@@ -11,12 +11,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'minitest-rails'
-  gem 'pry'
-end
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
@@ -68,9 +62,14 @@ gem 'unicorn'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
+  gem 'm'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'sqlite3'
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
 end
 
 group :development do
