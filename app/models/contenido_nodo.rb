@@ -17,7 +17,7 @@ private
 
   def texto_elemento_unico(nodo)
     if nodo.text?
-      nodo.text.blank? ? '' : eliminar_saltos(nodo.text)
+      nodo.text.blank? ? nodo.text == " " ? " " : "" : eliminar_saltos(nodo.text)
     elsif nodo.br?
       "\n\n"
     end
@@ -39,20 +39,20 @@ private
   end
 
   def agregar_salto_de_linea(str)
-    return '' if str.blank?
-    str.gsub(/(^ )|( $)/, '') + "\n\n"
+    return str if str.blank?
+    str.gsub(/(^ )|( $)/, "") + "\n\n"
   end
 
   def eliminar_saltos(str)
-    str.gsub(/ ?\r?\n/, ' ').squeeze(' ')
+    str.gsub(/ ?\r?\n/, " ").squeeze(" ")
   end
 end
 
 module AdditionalNodeMethods
-  def i?; element? and name == 'i'; end
+  def i?; element? and name == "i"; end
   def text?; kind_of?(Nokogiri::XML::Text); end
   def element?; kind_of?(Nokogiri::XML::Element); end
-  def paragraph?; element? and (name == 'p' or name == 'font'); end
-  def br?; element? and name == 'br'; end
+  def paragraph?; element? and (name == "p" or name == "font"); end
+  def br?; element? and name == "br"; end
   def has_no_children?; children.empty?; end
 end

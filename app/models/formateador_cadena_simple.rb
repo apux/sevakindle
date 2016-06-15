@@ -2,10 +2,12 @@ class FormateadorCadenaSimple
   class << self
     # Formatea una cadena para que se muestre correctamente con `simple_format`.
     #
-    # 1 Elimina los saltos duplicados que tenga la cadena
-    # 2 Elimina la palabra FIN (si existe) y deja un solo salto de línea al
+    # 1 Convierte los espacios especiales (generados por la presencia de
+    #   &nbsp;) a espacios normales y elimina espacios duplicados.
+    # 2 Elimina los saltos duplicados que tenga la cadena
+    # 3 Elimina la palabra FIN (si existe) y deja un solo salto de línea al
     #   final de la cadena
-    # 3 Convierte guiones cortos en guiones largos para diálogos y
+    # 4 Convierte guiones cortos en guiones largos para diálogos y
     #   parentéticos.
     #
     # Ejemplos:
@@ -83,7 +85,7 @@ class FormateadorCadenaSimple
     #
     # Retorna una cadena con los guiones convertidos.
     def convertir_guiones(str)
-      str.gsub(/(?<=^|\W)-|-(?=\W)/, '—')
+      str.gsub(/(?<=^|\W)-|-(?=\W)/, "—")
     end
 
     # Convierte los espacios generados por &npbs; a espacios normales y elimina
@@ -101,8 +103,10 @@ class FormateadorCadenaSimple
     #
     #     FormateadorCadenaSimple.limiar_espacios("Hola " << 160 << " mundo")
     #     # => "Hola mundo"
+    #
+    # Retorna una cadena sin espacios duplicados.
     def limpiar_espacios(str)
-      str.gsub("" << 160, ' ').squeeze(' ')
+      str.gsub("" << 160, " ").squeeze(' ').gsub(/^ /, "")
     end
   end
 end
