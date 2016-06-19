@@ -12,7 +12,7 @@ class Publicacion < ActiveRecord::Base
   validates :titulo, uniqueness: { scope: :autor_id }
 
   # == Scopes ==
-  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre" => 'Cuento') }
+  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre": 'Cuento') }
 
   # == Callbacks ==
   before_validation :obtener_de_url, if: :leer_de_url?
@@ -38,9 +38,7 @@ private
 
   def obtener_de_url
     self.url_original.strip!
-    self.titulo = parseador.titulo
-    self.texto  = parseador.texto
-    self.autor  = find_or_create_autor(parseador.autor)
+    extract_data_from_parser
   end
 
   def obtener_autor_de_nombre
@@ -55,12 +53,30 @@ private
     self.texto = FormateadorCadenaSimple.formatear(texto)
   end
 
-  def parseador
-    @parseador ||= ParseadorHtml.new(html_file)
+  def extract_data_from_parser
+    success = false
+    parseadores_disponibles.each do |parseador|
+      begin
+        self.titulo = parseador.titulo
+        self.texto  = parseador.texto
+        self.autor  = find_or_create_autor(parseador.autor)
+        success = true
+        break
+      rescue
+        next
+      end
+    end
+    errors.add :base, "Ningún parseador pudo extraer correctamente los datos de la página." unless success
   end
 
   def html_file
     Nokogiri::HTML(open(url_original))
   end
 
+  def parseadores_disponibles
+    @parseadores_disponibles ||= [
+      V2::ParseadorHtml.new(html_file),
+      ParseadorHtml.new(html_file),
+    ]
+  end
 end
