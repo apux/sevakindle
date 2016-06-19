@@ -1,5 +1,8 @@
-.col-md-6
-  = link_to([publicacion.autor, publicacion], class: 'summary') do
+.col-md-12
+  .summary
     .title= publicacion.titulo
     .author= publicacion.autor
-    .summary-text= simple_format truncate(publicacion.texto, length: 500)
+    .summary-text= simple_format truncate(publicacion.texto, length: 500, separator: " ")
+    .pull-right
+      = link_to "Leer cuento completo", [publicacion.autor, publicacion], class: "btn btn-primary"
+    .clearfix

@@ -3,22 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .publicaciones {
-  padding: 1em;
-
-  .row {
-    -moz-column-width: 20em;
-    -webkit-column-width: 20em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap:1em;
-  }
-
-  .row > .col-md-6 {
-    display: inline-block;
-    padding: 0.33rem;
-    width: 100%;
-    float: none;
-  }
-
 }
 
 .title {
@@ -37,8 +21,9 @@ h2.author {
   font-size: 1.7em;
 }
 
-a.summary {
+.summary {
   display: block;
+  text-align: justify;
   border: 1px solid #DDDDDD;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
@@ -52,12 +37,6 @@ a.summary {
     border: 1px solid #0088cc;
   }
   &:visited { color: black; }
-
-  .texto-resumen {
-    p {
-      padding-left: 20px;
-    }
-  }
 }
 
 .texto {
