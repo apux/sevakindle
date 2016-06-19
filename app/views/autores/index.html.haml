@@ -5,13 +5,12 @@
       %tr
         %th Nombre
         %th
-        %th
-        %th
     %tbody
       - @autores.each do |autor|
         %tr
           %td= autor.nombre
-          %td= link_to 'Ver cuentos', autor_publicaciones_path(autor), class: "btn btn-primary"
+          %td
+            = link_to 'Ver cuentos', autor_publicaciones_path(autor), class: "btn btn-primary pull-right"
 - else
   %div
     %h3 No se encontraron Autores
