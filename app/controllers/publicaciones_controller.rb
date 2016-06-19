@@ -71,7 +71,7 @@ class PublicacionesController < ApplicationController
     def publicaciones_scope
       Autor.friendly.find(params[:autor_id]).publicaciones.order(id: :desc)
     rescue ActiveRecord::RecordNotFound
-      Publicacion.order(id: :desc)
+      Publicacion.includes(:autor).order(id: :desc)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
