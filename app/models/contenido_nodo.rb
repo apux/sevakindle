@@ -6,10 +6,10 @@ class ContenidoNodo
 
   def texto(nodo)
     nodo.extend(AdditionalNodeMethods)
-    if nodo.has_no_children?
-      texto_elemento_unico(nodo)
-    else
+    if nodo.has_children?
       texto_elemento_con_hijos(nodo)
+    else
+      texto_elemento_unico(nodo)
     end
   end
 
@@ -54,5 +54,5 @@ module AdditionalNodeMethods
   def element?; kind_of?(Nokogiri::XML::Element); end
   def paragraph?; element? and (name == "p" or name == "font"); end
   def br?; element? and name == "br"; end
-  def has_no_children?; children.empty?; end
+  def has_children?; !children.empty?; end
 end
