@@ -28,7 +28,7 @@ private
     if nodo.paragraph?
       agregar_salto_de_linea(str)
     elsif nodo.i?
-      "<em>#{str.strip}</em>"
+      str.end_with?(" ") ?  "<em>#{str.strip}</em> " : "<em>#{str.strip}</em>"
     else
       str
     end

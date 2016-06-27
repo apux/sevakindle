@@ -53,7 +53,7 @@ class FormateadorCadenaSimple
     #     FormateadorCadenaSimple.eliminar_fin("Hola\n\nmundo\n\ncruel\n\nFIN\n\n")
     #     # => resultado = "Hola\n\nmundo\n\ncruel\n"
     def eliminar_fin(str)
-      str.gsub(/FIN\n\n\z/, "").chomp
+      str.gsub(/FIN\n\n/, "").chomp
     end
 
     # Convierte los guiones cortos en guiones largos.

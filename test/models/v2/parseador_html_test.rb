@@ -70,4 +70,24 @@ describe V2::ParseadorHtml do
     end
   end # describe amorosa
 
+  describe 'el informe de brodie' do
+    before do
+      file = original_de('el_informe_de_brodie')
+      html = Nokogiri::HTML(file, nil, 'windows-1252')
+      @parseador = V2::ParseadorHtml.new(html)
+    end
+
+    it 'extract the autor' do
+      @parseador.autor.must_equal 'Jorge Luis Borges'
+    end
+
+    it 'extract the title' do
+      @parseador.titulo.must_equal 'El informe de Brodie'
+    end
+
+    it 'extract the text' do
+      @parseador.texto.must_equal resultado_de('el_informe_de_brodie')
+    end
+  end # describe amorosa
+
 end
