@@ -22,9 +22,9 @@ describe PublicacionesController do
       post(
         :create, 
         publicacion: {
-          titulo: "El Ingenioso Hidalgo Don Quijote de La Mancha",
-          texto: "En un lugar de La Mancha de cuyo nombre no quiero acordarme...",
-          autor_id: autores(:cervantes).id,
+          titulo: "Cien años de soledad",
+          texto: "Muchos años después, frente al pelotó de fusilamiento, el coronel...",
+          nombre_autor: "Gabriel García Márquez",
           tipo_id: tipos_publicaciones(:novela).id
         }
       )
