@@ -12,7 +12,7 @@ class Publicacion < ActiveRecord::Base
   validates :titulo, uniqueness: { scope: :autor_id }
 
   # == Scopes ==
-  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre": 'Cuento') }
+  scope :cuentos, -> { joins(:tipo).where("tipos_publicaciones.nombre": "Cuento") }
 
   # == Callbacks ==
   before_validation :obtener_de_url, if: :leer_de_url?
@@ -75,6 +75,7 @@ private
 
   def parseadores_disponibles
     @parseadores_disponibles ||= [
+      V3::ParseadorHtml.new(html_file),
       V2::ParseadorHtml.new(html_file),
       ParseadorHtml.new(html_file),
     ]

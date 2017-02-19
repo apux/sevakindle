@@ -52,7 +52,7 @@ module AdditionalNodeMethods
   def i?; element? and name == "i"; end
   def text?; kind_of?(Nokogiri::XML::Text); end
   def element?; kind_of?(Nokogiri::XML::Element); end
-  def paragraph?; element? and (name == "p" or name == "font"); end
+  def paragraph?; element? and (name == "p" or name == "font" or name == "div"); end
   def br?; element? and name == "br"; end
   def has_children?; !children.empty?; end
 end

@@ -10,7 +10,7 @@ describe V2::ParseadorHtml do
     File.open(Rails.root.to_s + "/test/fixtures/#{nombre}.original.html")
   end
 
-  describe 'baltazar gerard' do
+  describe "baltazar gerard" do
     before do
       file = original_de('baltasar_gerard')
       html = Nokogiri::HTML(file, nil, 'UTF8')
@@ -30,7 +30,7 @@ describe V2::ParseadorHtml do
     end
   end # describe baltazar gerard
 
-  describe 'amorosa' do
+  describe "amorosa" do
     before do
       file = original_de('amorosa')
       html = Nokogiri::HTML(file, nil, 'UTF8')
@@ -50,7 +50,7 @@ describe V2::ParseadorHtml do
     end
   end # describe amorosa
 
-  describe 'viaje a la semilla' do
+  describe "viaje a la semilla" do
     before do
       file = original_de('viaje_a_la_semilla')
       html = Nokogiri::HTML(file, nil, 'windows-1252')
@@ -68,9 +68,9 @@ describe V2::ParseadorHtml do
     it 'extract the text' do
       @parseador.texto.must_equal resultado_de('viaje_a_la_semilla')
     end
-  end # describe amorosa
+  end # describe viaje a la semila
 
-  describe 'el informe de brodie' do
+  describe "el informe de brodie" do
     before do
       file = original_de('el_informe_de_brodie')
       html = Nokogiri::HTML(file, nil, 'windows-1252')
@@ -88,6 +88,6 @@ describe V2::ParseadorHtml do
     it 'extract the text' do
       @parseador.texto.must_equal resultado_de('el_informe_de_brodie')
     end
-  end # describe amorosa
+  end # describe el informe de brodie
 
 end
