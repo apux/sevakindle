@@ -1,13 +1,14 @@
 !!!
 %html{:lang => "en"}
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{ charset: "utf-8"}/
+    %meta{ "http-equiv" => "Content-Type", content: "text/html; charset=UTF-8" }/
+    %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{ content: "width=device-width, initial-scale=1", name: "viewport"}/
     / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
     %link{:href => "../../favicon.ico", :rel => "icon"}/
     %title= content_for?(:title) ? yield(:title) : "Sevakindle"
-    %meta{:content => yield(:author), :name => "author"}/
+    %meta{ content: yield(:author), name: "author" }/
     = csrf_meta_tags
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
