@@ -1,6 +1,6 @@
 class Autor < ActiveRecord::Base
   include FriendlyId
-  friendly_id :nombre, :use => :slugged
+  friendly_id :nombre, use: :slugged
 
   # == Associations ==
   has_many :publicaciones
