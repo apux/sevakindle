@@ -33,7 +33,7 @@ class Publicacion < ActiveRecord::Base
 private
 
   def leer_de_url?
-    ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include?(leer_de_url)
+    ActiveModel::Type::Boolean.new.cast(leer_de_url)
   end
 
   def obtener_de_url
