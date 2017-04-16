@@ -1,4 +1,4 @@
-class Autor < ActiveRecord::Base
+class Autor < ApplicationRecord
   include FriendlyId
   friendly_id :nombre, use: :slugged
 

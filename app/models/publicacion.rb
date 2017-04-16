@@ -1,6 +1,6 @@
-require 'open-uri'
+require "open-uri"
 
-class Publicacion < ActiveRecord::Base
+class Publicacion < ApplicationRecord
   attr_accessor :leer_de_url, :nombre_autor
 
   # == Associations ==
