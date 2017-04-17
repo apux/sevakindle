@@ -1,4 +1,4 @@
-class TipoPublicacion < ActiveRecord::Base
+class TipoPublicacion < ApplicationRecord
   # == Associations ==
   has_many :publicaciones
 

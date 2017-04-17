@@ -7,45 +7,43 @@ describe TiposPublicacionesController do
   end
 
   it "must get index" do
-    get :index
+    get tipos_publicaciones_path
     assert_response :success
-    assert_not_nil assigns(:tipos_publicaciones)
   end
 
   it "must get new" do
-    get :new
+    get new_tipo_publicacion_path
     assert_response :success
   end
 
   it "must create tipo_publicacion" do
     assert_difference('TipoPublicacion.count') do
-      post :create, tipo_publicacion: { nombre: 'Ensayo' }
+      post tipos_publicaciones_path, params: { tipo_publicacion: { nombre: 'Ensayo' } }
     end
 
-    assert_redirected_to tipo_publicacion_path(assigns(:tipo_publicacion))
+    assert_redirected_to tipo_publicacion_path(TipoPublicacion.last)
   end
 
   it "must show tipo_publicacion" do
-    get :show, id: @tipo_publicacion
+    get tipo_publicacion_path(@tipo_publicacion)
     assert_response :success
   end
 
   it "must get edit" do
-    get :edit, id: @tipo_publicacion
+    get edit_tipo_publicacion_path(@tipo_publicacion)
     assert_response :success
   end
 
   it "must update tipo_publicacion" do
-    put :update, id: @tipo_publicacion, tipo_publicacion: { nombre: 'Ensayo' }
-    assert_redirected_to tipo_publicacion_path(assigns(:tipo_publicacion))
+    put tipo_publicacion_path(@tipo_publicacion), params: { tipo_publicacion: { nombre: 'Ensayo' } }
+    assert_redirected_to tipo_publicacion_path(@tipo_publicacion)
   end
 
   it "must destroy tipo_publicacion" do
     assert_difference('TipoPublicacion.count', -1) do
-      delete :destroy, id: @tipo_publicacion
+      delete tipo_publicacion_path(@tipo_publicacion)
     end
 
     assert_redirected_to tipos_publicaciones_path
   end
-
 end

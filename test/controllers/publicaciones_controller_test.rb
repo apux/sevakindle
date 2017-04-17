@@ -7,59 +7,62 @@ describe PublicacionesController do
   end
 
   it "must get index" do
-    get :index
+    get publicaciones_path
     assert_response :success
-    assert_not_nil assigns(:publicaciones)
   end
 
   it "must get new" do
-    get :new
+    get new_publicacion_path
     assert_response :success
   end
 
   it "must create publicacion" do
     assert_difference('Publicacion.count') do
       post(
-        :create, 
-        publicacion: {
-          titulo: "Cien años de soledad",
-          texto: "Muchos años después, frente al pelotó de fusilamiento, el coronel...",
-          nombre_autor: "Gabriel García Márquez",
-          tipo_id: tipos_publicaciones(:novela).id
+        publicaciones_path,
+        params: {
+          publicacion: {
+            titulo: "Cien años de soledad",
+            texto: "Muchos años después, frente al pelotó de fusilamiento, el coronel...",
+            nombre_autor: "Gabriel García Márquez",
+            tipo_id: tipos_publicaciones(:novela).id
+          }
         }
       )
     end
 
-    assert_redirected_to autor_publicacion_path(assigns(:publicacion).autor, assigns(:publicacion))
+    publicacion = Publicacion.last
+    assert_redirected_to autor_publicacion_path(publicacion.autor.nombre.parameterize, publicacion.titulo.parameterize)
   end
 
   it "must show publicacion" do
-    get :show, id: @publicacion, autor_id: @publicacion.autor
+    get publicacion_path(@publicacion), params: { autor_id: @publicacion.autor }
     assert_response :success
   end
 
   it "must get edit" do
-    get :edit, id: @publicacion
+    get edit_publicacion_path(@publicacion)
     assert_response :success
   end
 
   it "must update publicacion" do
     put(
-      :update,
-      id: @publicacion,
-      publicacion: {
-        titulo: "El Ingenioso Hidalgo Don Quijote de La Mancha",
-        texto: "En un lugar de La Mancha de cuyo nombre no quiero acordarme...",
-        autor_id: autores(:cervantes).id,
-        tipo_id: tipos_publicaciones(:novela).id
+      publicacion_path(@publicacion),
+      params: {
+        publicacion: {
+          titulo: "El Ingenioso Hidalgo Don Quijote de La Mancha",
+          texto: "En un lugar de La Mancha de cuyo nombre no quiero acordarme...",
+          autor_id: autores(:cervantes).id,
+          tipo_id: tipos_publicaciones(:novela).id
+        }
       }
     )
-    assert_redirected_to publicacion_path(assigns(:publicacion))
+    assert_redirected_to publicacion_path(@publicacion.titulo.parameterize)
   end
 
   it "must destroy publicacion" do
     assert_difference('Publicacion.count', -1) do
-      delete :destroy, id: @publicacion
+      delete publicacion_path(@publicacion)
     end
 
     assert_redirected_to publicaciones_path

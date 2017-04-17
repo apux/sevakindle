@@ -1,6 +1,6 @@
-require 'open-uri'
+require "open-uri"
 
-class Publicacion < ActiveRecord::Base
+class Publicacion < ApplicationRecord
   attr_accessor :leer_de_url, :nombre_autor
 
   # == Associations ==
@@ -33,7 +33,7 @@ class Publicacion < ActiveRecord::Base
 private
 
   def leer_de_url?
-    ActiveRecord::ConnectionAdapters::Column::TRUE_VALUES.include?(leer_de_url)
+    ActiveModel::Type::Boolean.new.cast(leer_de_url)
   end
 
   def obtener_de_url
