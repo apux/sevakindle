@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= content_for?(:title) ? yield(:title) : "Sevakindle" %></title>
     <meta name="author" content="<%= yield(:author) %>">
     <%= csrf_meta_tags %>
@@ -23,16 +20,21 @@
     <div class="container">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="<%= controller_name == "cuentos" || controller_name == 'publicaciones' ? "active" : "" %>"><%= link_to "Cuentos", cuentos_path %></li>
-            <li role="presentation" class="<%= controller_name == "autores" ? "active" : "" %>"><%= link_to "Autores", autores_path %></li>
+          <ul class="nav nav-pills float-right">
+            <li class="nav-item">
+              <%= link_to "Cuentos", cuentos_path, class: ("nav-link " + (controller_name == "cuentos" || controller_name == "publicaciones" ? "active" : "")) %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Autores", autores_path, class: ("nav-link " + (controller_name == "autores" ? "active" : "")) %>
+            </li>
           </ul>
         </nav>
+
         <h3 class="text-muted">Sevakindle</h3>
       </div>
 
       <div class="row">
-        <div class="span12">
+        <div class="col-lg-12">
           <% if notice %>
             <div class="alert alert-success">
               <button class="close" data-dismiss="alert">×</button>

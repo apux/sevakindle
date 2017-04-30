@@ -1,8 +1,8 @@
-.col-md-12
+.col-lg-12
   .summary
     .title= publicacion.titulo
     .author= publicacion.autor
     .summary-text= simple_format truncate(publicacion.texto.html_safe, length: 500, separator: " ", escape: false)
-    .pull-right
+    .float-right
       = link_to "Leer cuento completo", [publicacion.autor, publicacion], class: "btn btn-primary"
     .clearfix
