@@ -61,7 +61,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rieles', github: 'LogicalBricks/rieles', branch: 'rails5'
+gem 'rieles', github: 'LogicalBricks/rieles', branch: 'rails_5_2'
 gem 'nokogiri'
 gem 'unicorn'
 

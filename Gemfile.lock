@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/LogicalBricks/rieles.git
-  revision: 2aabacfd3fb7d1d61cc2bfe79bf9284313b174e0
-  branch: rails5
+  revision: ec58c1c1172ce9c9432c299ce326feee9e290283
+  branch: rails_5_2
   specs:
     rieles (0.1.0)
       activesupport (~> 5.0)
