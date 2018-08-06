@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.4.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "5.0.2"
+gem "rails", "5.0.7"
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -29,7 +29,7 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-gem "bootstrap", "~> 4.0.0.alpha6"
+gem "bootstrap"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
