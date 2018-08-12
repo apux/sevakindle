@@ -2,7 +2,8 @@ require "test_helper"
 
 describe Publicacion do
   before do
-    @publicacion = Publicacion.new titulo: 'aaa', texto: 'bbb'
+    tipo = TipoPublicacion.new nombre: "cuento"
+    @publicacion = Publicacion.new titulo: 'aaa', texto: 'bbb', tipo: tipo
   end
 
   it "must be valid" do
