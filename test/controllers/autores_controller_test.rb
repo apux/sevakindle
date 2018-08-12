@@ -16,23 +16,8 @@ describe AutoresController do
     assert_response :success
   end
 
-  it "must create autor" do
-    skip "Fix routes"
-    assert_difference('Autor.count') do
-      post autores_path, params: { autor: { nombre: 'Gabriel García Márquez' } }
-    end
-
-    assert_redirected_to autor_path(Autor.last)
-  end
-
   it "must show autor" do
     get autor_path(@autor)
-    assert_response :success
-  end
-
-  it "must get edit" do
-    skip "Fix routes"
-    get edit_autor_path(@autor)
     assert_response :success
   end
 
