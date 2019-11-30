@@ -18,15 +18,15 @@ describe V3::ParseadorHtml do
     end
 
     it "extract the autor" do
-      @parseador.autor.must_equal "Edmundo Valadés"
+      _(@parseador.autor).must_equal "Edmundo Valadés"
     end
 
     it "extract the title" do
-      @parseador.titulo.must_equal "La muerte tiene permiso"
+      _(@parseador.titulo).must_equal "La muerte tiene permiso"
     end
 
     it "extract the text" do
-      @parseador.texto.must_equal resultado_de("la-muerte-tiene-permiso")
+      _(@parseador.texto).must_equal resultado_de("la-muerte-tiene-permiso")
     end
   end # describe La muerte tiene permiso
 
@@ -38,15 +38,15 @@ describe V3::ParseadorHtml do
     end
 
     it "extract the autor" do
-      @parseador.autor.must_equal "F. Scott Fitzgerald"
+      _(@parseador.autor).must_equal "F. Scott Fitzgerald"
     end
 
     it "extract the title" do
-      @parseador.titulo.must_equal "Último beso"
+      _(@parseador.titulo).must_equal "Último beso"
     end
 
     it "extract the texto" do
-      @parseador.texto.must_equal resultado_de("ultimo-beso")
+      _(@parseador.texto).must_equal resultado_de("ultimo-beso")
     end
   end # describe Último beso
 
@@ -58,15 +58,15 @@ describe V3::ParseadorHtml do
     end
 
     it "extract the autor" do
-      @parseador.autor.must_equal "Leopoldo Lugones"
+      _(@parseador.autor).must_equal "Leopoldo Lugones"
     end
 
     it "extract the title" do
-      @parseador.titulo.must_equal "La dicha de vivir"
+      _(@parseador.titulo).must_equal "La dicha de vivir"
     end
 
     it "extract the text" do
-      @parseador.texto.must_equal resultado_de("la-dicha-de-vivir")
+      _(@parseador.texto).must_equal resultado_de("la-dicha-de-vivir")
     end
   end # describe La dicha de vivir
 
@@ -78,15 +78,15 @@ describe V3::ParseadorHtml do
     end
 
     it "extract the autor" do
-      @parseador.autor.must_equal "Leonora Carrington"
+      _(@parseador.autor).must_equal "Leonora Carrington"
     end
 
     it "extract the title" do
-      @parseador.titulo.must_equal "Los conejos blancos"
+      _(@parseador.titulo).must_equal "Los conejos blancos"
     end
 
     it "extract the text" do
-      @parseador.texto.must_equal resultado_de("los-conejos-blancos")
+      _(@parseador.texto).must_equal resultado_de("los-conejos-blancos")
     end
   end # describe Los conejos blancos
 

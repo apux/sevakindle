@@ -4,17 +4,17 @@ describe ContenidoNodo do
   describe '#texto' do
     it 'devuelve \n si el nodo es un elemento br' do
       nodo = Nokogiri.HTML('hola<br />mundo')
-      ContenidoNodo.new.texto(nodo).must_equal "hola\n\nmundo\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "hola\n\nmundo\n\n"
     end
 
     it 'devuelve el texto de un unico elemento de párrafo' do
       nodo = Nokogiri.HTML('<p>Hola mundo</p>')
-      ContenidoNodo.new.texto(nodo).must_equal "Hola mundo\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola mundo\n\n"
     end
 
     it 'devuelve el texto de un unico elemento de fuente' do
       nodo = Nokogiri.HTML('<font>Hola mundo</font>')
-      ContenidoNodo.new.texto(nodo).must_equal "Hola mundo\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola mundo\n\n"
     end
 
     it 'devuelve el texto de un nodo fuente con brs' do
@@ -25,19 +25,19 @@ describe ContenidoNodo do
 </font>
       }
       nodo = Nokogiri.HTML(str)
-      ContenidoNodo.new.texto(nodo).must_equal "Hola mundo\n\n\n\ncruel\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola mundo\n\n\n\ncruel\n\n"
     end
 
     it 'devuelve el texto de un nodo parrafo con brs' do
       str = %{
-<p>Hola 
+<p>Hola
 mundo
 <br>
 cruel
 </p>
       }
       nodo = Nokogiri.HTML(str)
-      ContenidoNodo.new.texto(nodo).must_equal "Hola mundo\n\ncruel\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola mundo\n\ncruel\n\n"
     end
 
     it 'devuelve el texto de un nodo parrafo con fuente y con brs' do
@@ -51,7 +51,7 @@ Hola
 </p>
       }
       nodo = Nokogiri.HTML(str)
-      ContenidoNodo.new.texto(nodo).must_equal "Hola\n\nmundo\n\n\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola\n\nmundo\n\n\n\n"
     end
 
     it 'devuelve el texto con un nodo fuente seguido de un un nodo parrafo con un nodo fuente anidado' do
@@ -63,12 +63,12 @@ Hola
 cruel</font>
        }
       )
-      ContenidoNodo.new.texto(nodo).must_equal "Hola\n\nmundo\n\n\n\ncruel\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola\n\nmundo\n\n\n\ncruel\n\n"
     end
 
     it 'devuelve el texto con formato cursivas si un nodo indica ese formato' do
       nodo = Nokogiri.HTML('<font>Hola <i>mundo</i></font>')
-      ContenidoNodo.new.texto(nodo).must_equal "Hola <em>mundo</em>\n\n"
+      _(ContenidoNodo.new.texto(nodo)).must_equal "Hola <em>mundo</em>\n\n"
     end
   end
 end

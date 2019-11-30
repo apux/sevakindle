@@ -6,12 +6,12 @@ describe TipoPublicacion do
   end
 
   it "must be valid" do
-    @tipo_publicacion.valid?.must_equal true
+    _(@tipo_publicacion.valid?).must_equal true
   end
 
   describe '#to_s' do
     it "must respond with its name" do
-      @tipo_publicacion.to_s.must_equal 'aaa'
+      _(@tipo_publicacion.to_s).must_equal 'aaa'
     end
   end
 end

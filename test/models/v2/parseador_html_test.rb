@@ -18,15 +18,15 @@ describe V2::ParseadorHtml do
     end
 
     it 'extract the autor' do
-      @parseador.autor.must_equal 'Juan José Arreola'
+      _(@parseador.autor).must_equal 'Juan José Arreola'
     end
 
     it 'extract the title' do
-      @parseador.titulo.must_equal 'Baltasar Gérard [1555 1582]'
+      _(@parseador.titulo).must_equal 'Baltasar Gérard [1555 1582]'
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal resultado_de('baltasar_gerard')
+      _(@parseador.texto).must_equal resultado_de('baltasar_gerard')
     end
   end # describe baltazar gerard
 
@@ -38,15 +38,15 @@ describe V2::ParseadorHtml do
     end
 
     it 'extract the autor' do
-      @parseador.autor.must_equal 'Guy de Maupassant'
+      _(@parseador.autor).must_equal 'Guy de Maupassant'
     end
 
     it 'extract the title' do
-      @parseador.titulo.must_equal 'Amorosa'
+      _(@parseador.titulo).must_equal 'Amorosa'
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal resultado_de('amorosa')
+      _(@parseador.texto).must_equal resultado_de('amorosa')
     end
   end # describe amorosa
 
@@ -58,15 +58,15 @@ describe V2::ParseadorHtml do
     end
 
     it 'extract the autor' do
-      @parseador.autor.must_equal 'Alejo Carpentier'
+      _(@parseador.autor).must_equal 'Alejo Carpentier'
     end
 
     it 'extract the title' do
-      @parseador.titulo.must_equal 'Viaje a la semilla'
+      _(@parseador.titulo).must_equal 'Viaje a la semilla'
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal resultado_de('viaje_a_la_semilla')
+      _(@parseador.texto).must_equal resultado_de('viaje_a_la_semilla')
     end
   end # describe viaje a la semila
 
@@ -78,15 +78,15 @@ describe V2::ParseadorHtml do
     end
 
     it 'extract the autor' do
-      @parseador.autor.must_equal 'Jorge Luis Borges'
+      _(@parseador.autor).must_equal 'Jorge Luis Borges'
     end
 
     it 'extract the title' do
-      @parseador.titulo.must_equal 'El informe de Brodie'
+      _(@parseador.titulo).must_equal 'El informe de Brodie'
     end
 
     it 'extract the text' do
-      @parseador.texto.must_equal resultado_de('el_informe_de_brodie')
+      _(@parseador.texto).must_equal resultado_de('el_informe_de_brodie')
     end
   end # describe el informe de brodie
 

@@ -6,12 +6,12 @@ describe Autor do
   end
 
   it "must be valid" do
-    @autor.valid?.must_equal true
+    _(@autor.valid?).must_equal true
   end
 
   describe '#to_s' do
     it "must respond with the autor's name" do
-      @autor.to_s.must_equal 'aaa bbb'
+      _(@autor.to_s).must_equal 'aaa bbb'
     end
   end
 end
