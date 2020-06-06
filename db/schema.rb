@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809003123) do
+ActiveRecord::Schema.define(version: 2015_08_09_003123) do
 
   create_table "autores", force: :cascade do |t|
-    t.string   "nombre"
+    t.string "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string "slug"
     t.index ["slug"], name: "index_autores_on_slug", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
     t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
@@ -33,21 +33,21 @@ ActiveRecord::Schema.define(version: 20150809003123) do
   end
 
   create_table "publicaciones", force: :cascade do |t|
-    t.string   "titulo"
-    t.text     "texto"
-    t.string   "url_original"
-    t.integer  "autor_id"
-    t.integer  "tipo_id"
+    t.string "titulo"
+    t.text "texto"
+    t.string "url_original"
+    t.integer "autor_id"
+    t.integer "tipo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string "slug"
     t.index ["autor_id"], name: "index_publicaciones_on_autor_id"
     t.index ["slug"], name: "index_publicaciones_on_slug", unique: true
     t.index ["tipo_id"], name: "index_publicaciones_on_tipo_id"
   end
 
   create_table "tipos_publicaciones", force: :cascade do |t|
-    t.string   "nombre"
+    t.string "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

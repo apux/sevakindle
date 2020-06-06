@@ -4,6 +4,6 @@ rvm:
 sudo: false
 deploy:
   provider: heroku
-  run: "rake db:migrate"
+  run: rake db:migrate
   api_key:
-    secure: M9/2u9+ZHcLWW43CsnxFeWmaIiwsba1dH4v+5WAqscZmuhAx5ijRRvkB0LV7TvsduFKv2nybqkk6nIl7uFIcdG2KwwTk7w0lRsm/buXJ2+9uzbcCY3q2DkTwzneao0E4AGVTQA+YEMSbG3s2iDXLuIMIVryuKdEaHcb9PMTMKoE=
+    secure: PmXa1bDRu4qnT6Rf3kMm5Xt3l4jZBG9Y9B3nr/YEk3cwGrYW8rV79g44dS4m0yuKPbgxSx8bTkaomtfcYDmgBO7Xefa8a6qyQS2EmyPCRHuX7kXGURD06gPyhluauf+5fwoTRZ89FJ5o6rjg43fQ5NSC+VjuxMtrK4SJPTGdWAA=

@@ -1,4 +1,4 @@
-class CreatePublicaciones < ActiveRecord::Migration
+class CreatePublicaciones < ActiveRecord::Migration[4.2]
   def change
     create_table :publicaciones do |t|
       t.string :titulo
