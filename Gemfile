@@ -58,8 +58,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "pry-rails"
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
   gem 'sqlite3'
   gem 'minitest-rails'
   gem 'minitest-reporters', '1.3.0'
