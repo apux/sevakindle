@@ -15,7 +15,7 @@ class PublicacionesController < ApplicationController
 
   # GET /publicaciones/new
   def new
-    @publicacion = Publicacion.new
+    @publicacion = Publicacion.new leer_de_url: true
   end
 
   # GET /publicaciones/1/edit

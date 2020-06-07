@@ -5,15 +5,15 @@
     %label
       = f.check_box :leer_de_url
       Leer de url
+  .form-group
+    = f.label :url_original
+    = f.text_field :url_original, class: "form-control"
   .form-group.not_for_url
     = f.label :titulo
     = f.text_field :titulo, class: "form-control"
   .form-group.not_for_url
     = f.label :texto
     = f.text_area :texto, class: "form-control"
-  .form-group
-    = f.label :url_original
-    = f.text_field :url_original, class: "form-control"
   .form-group.not_for_url
     = f.label :nombre_autor
     = f.text_field :nombre_autor, class: "form-control"
