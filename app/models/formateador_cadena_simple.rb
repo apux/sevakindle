@@ -16,13 +16,10 @@ class FormateadorCadenaSimple
     #
     # Retorna una cadena formateada.
     def formatear(str)
-      convertir_guiones(
-        eliminar_fin(
-          eliminar_saltos_duplicados(
-            limpiar_espacios(str)
-          )
-        )
-      )
+      limpiar_espacios(str).
+        then { |s| eliminar_saltos_duplicados(s) }.
+        then { |s| eliminar_fin(s) }.
+        then { |s| convertir_guiones(s) }
     end
 
     # Elimina los saltos de línea duplicados en una cadena y deja sólo dos

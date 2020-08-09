@@ -66,7 +66,7 @@ describe FormateadorCadenaSimple do
     end
   end # describe .convertir_guiones
 
-  describe '#convertir_espacios' do
+  describe '.limpiar_espacios' do
     it 'regresa la misma cadena si no tiene espacios &nbsp;' do
       str = "hola mundo"
       resultado = "hola mundo"
@@ -84,7 +84,19 @@ describe FormateadorCadenaSimple do
       resultado = "hola mundo"
       _(FormateadorCadenaSimple.limpiar_espacios(str)).must_equal(resultado)
     end
+  end # describe .limpiar_espacios
 
-  end # describe #convertir_espacios
-
+  describe '.formatear' do
+    it 'limpia espacios, elimina saltos duplicados, elimina fin y convierte guiones' do
+      texto = "hola " << 160 << " mundo"
+      texto += "\n\n\n\n"
+      texto += "salto"
+      texto += "\n\n\n\n"
+      texto += "-Este es un diálogo -dijo el personaje-. Y se marchó."
+      texto += "\n\n\n\n"
+      texto += "FIN\n\n"
+      str = FormateadorCadenaSimple.formatear(texto)
+      _(str).must_equal("hola mundo\n\nsalto\n\n—Este es un diálogo —dijo el personaje—. Y se marchó.\n")
+    end
+  end
 end
